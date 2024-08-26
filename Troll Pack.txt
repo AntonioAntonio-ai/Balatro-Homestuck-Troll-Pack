@@ -1,0 +1,64 @@
+~~~ TABLE OF CONTENTS  ~~~
+~ 0. Installation		~
+~ 1. Compatibility		~
+~ 2. Jokers		~
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+===0. Installation ===
+For windows:
+Step 1: Install balamod
+Step 2: Enable seeing hidden folders in Windows Explorer, or whatever file browser you use
+Step 3: Drag all folders included with the mod into C:/Users/mouse/AppData/Roaming/Balatro
+Step 4: :)
+
+===1. Compatibility ===
+A large portion of this mod appends code before or after existing code without interfering with it. The exception is in the code for Tavros. In it, [G.FUNCS.get_poker_hand_info] has been assigned a new function with the code for Tavros preceding a [return tempfunk2(_cards)], where [tempfunk2] is the original [G.FUNCS.get_poker_hand_info].
+
+As well, [G.FUNCS.evaluate_play] has Tavros code before and after it with the original function contained in [tempfunk()] in the middle.
+
+This mod also adds two global flags:
+* [G.GAME.pool_flags.tavros]
+* [G.GAME.pool_flags.loctavros]
+
+If [G.GAME.pool_flags.tavros] is true, after [G.FUNCS.evaluate_play], G.play.cards and G.hand.cards will be swapped. 
+If [G.GAME.pool_flags.loctavros] is true, the next time [G.FUNCS.get_poker_hand_info] is called, it will return a High Card with the Splash joker effect
+
+Also, if a card has ability.ghost = true, its height and width will be set to 0 on load in :3
+
+=== 2. Jokers ===
+	Karkat
+Uncommon Joker, $3. permanently gives +3 bonus Chips to cards discarded or left in hand when a hand is played.
+	Aradia
+Uncommon Joker, $6. on death, prevent death, remove all non-eternal jokers (including this one), change all playing cards to a random suit and rank with a 1/6 chance to gain a random enhancement, a 1/12 chance to gain a random seal, and a 1/24 chance to be foil, creates a random foil joker per joker removed, adds a polychrome tarot and planet card to the Center field (where the jokers go), adds a negative tarot and planet card to the consumables field, 
+
+On death, five more cards are added to the deck. One is a semifunctional Spectral card that is an Ace of Spades. One is a nonfunctional joker that is an Ace, Jack, 2, or 8 of Hearts. One is a semifunctional tarot card that is a face card of clubs. One is a functional planet card that is a numbered card of diamonds. One is a randomly ranked and suited blank Stone, Steel or Gold card. Some Spectral cards such as Immolate or Cryptid crash the game when used. Using some tarot cards such as Strength or The Sun convert these added cards into cards that don't crash when duplicated such as by Death.
+
+Also on death, decreases money by a random amount from $18 to $22
+	Tavros
+Uncommon joker, $4. If played hand is a single card, the played hand and held hand are swapped. The held hand is all scored a la Splash, and the played hand is held. Afterwards, the single card played is discarded to the discard pile and the held hand is kept.
+	Sollux
+Uncommon joker, $8. For every possible combination of pairs (nCr) of ranks held in hand when a hand is played, there is a LISTED PROBABILITY 1 in 2 chance for a random card to be converted to a glass card.
+	Nepeta
+Uncommon joker, $5. For every possible combination of pairs (nCr) of ranks in played hand, +25 Chips. (2 cards, 1*25=25; 3 cards, 3*25=75; 4 cards, 6*25=150; 5 cards, 10*25=250 etc.)
+	Kanaya
+Uncommon joker, $4. If played hand contains a Straight, creates up to 2 planet cards if there is space.
+	Terezi
+Uncommon joker, $6. When this card is bought and after every hand played, all listed probabilities are converted to either 413 or -413.
+	Vriska
+Uncommon joker, $8. If scored card is an Eight of Spades, X3 Mult. Else, -1 Mult.
+	Aradiabot
+Uncommon joker, $6. -1 hands, -1 hand size, +2 discards, +1 discard when a hand is played. Can take hands/hand size to zero and below, either of which results in a death.
+	Equius A
+Uncommon joker, $5. Available through normal means. If Nepeta, Aradia, or Aradiabot are had, X2 Mult. If Vriska is had, X1.5 Mult. If Sollux or Eridan are had, X1.25 Mult. Once sold, creates Equius B
+	Equius B
+Only available when Equius A is sold. While had, +1 Joker Slot. On the next hand played, upgrades its hand type by 3 levels. If a hand is played while two or more of these are had, crashes the game.
+	Fantrolls
+Uncommon joker, $10. When added to the center, this Joker's sell value becomes $20, it creates an invisible ghost card copy of itself with $0 sell value (also copying editions and probably stickers) and adds it to the center, and +2 Joker slots. When removed from the center, the invisible ghost card copy of this Joker is destroyed and -2 Joker slots.
+	Gamzee
+Uncommon joker, $9. Did you try saving and quitting? :0)
+	Eridan
+Uncommon joker, $5. Discarding five face cards at once destroys one of them at random and creates a Spectral card. This also debuffs this Joker and makes it eternal. Selecting a blind undebuffs this Joker and makes it uneternal, and makes certain the destroyed card really is destroyed. This Joker could create unintentional ghost cards with its destruction of playing cards.
+	Feferi
+Uncommon joker, $7. Scoring a Diamonds face card gives money equal to 1.05x money before the hand was played and gives chips equal to 1.25x current Chips, except maybe a little lower.
+	Callie
+Uncommon joker, $11. Before every hand played, there is a 1 in X chance that this joker destroys itself. Played cards that aren't scored or are debuffed add +X Mult to the joker and have a 1 in X chance to add a purple or blue seal to that card. The Mult added to the joker is added to the hand's Mult when this Joker is iterated on in the Center, not when each card is played.
